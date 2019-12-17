@@ -31,29 +31,33 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="comum.h" />
-		<Unit filename="data.h" />
-		<Unit filename="categoria.h" />
-		<Unit filename="empregado.h" />
-		<Unit filename="empregados.h" />
-		<Unit filename="comum.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="data.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="categoria.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="categoria.h" />
+		<Unit filename="comum.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="comum.h" />
+		<Unit filename="data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="data.h" />
 		<Unit filename="empregado.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="empregado.h" />
 		<Unit filename="empregados.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="empregados.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="menus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menus.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
