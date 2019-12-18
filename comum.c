@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int devolverNumero(char string[])
 {
@@ -7,6 +8,15 @@ int devolverNumero(char string[])
     printf("%s: ", string);
     scanf("%d", &num);
     return num;
+}
+
+void devolverString(char *texto, char *str)
+{
+    char temp[200];
+    fflush(stdin);
+    printf("%s: ", texto);
+    gets(temp);
+    strcpy(str, temp);
 }
 
 void limparEcra()

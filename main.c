@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "comum.c"
-#include "data.c"
-#include "empregado.c"
-#include "empregados.c"
-#include "menus.c"
+#include "comum.h"
+#include "data.h"
+#include "empregado.h"
+#include "empregados.h"
+#include "menus.h"
 
 Empregados empregados;
 

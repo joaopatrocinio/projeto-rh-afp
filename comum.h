@@ -2,6 +2,7 @@
 #define COMUM_H_INCLUDED
 
 int devolverNumero(char string[]);
+void devolverString(char *texto, char *str);
 void limparEcra();
 void pausa();
 

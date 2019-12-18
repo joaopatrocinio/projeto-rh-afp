@@ -14,5 +14,6 @@ typedef struct Empregado
 
 Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim);
 Empregado inserirDadosEmpregado();
+void mostrarEmpregado(Empregado empregado);
 
 #endif

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "empregado.h"
 #include "empregados.h"
 
 void desenharMenu()
@@ -23,6 +24,7 @@ void menuGerirEmpregados(Empregados *empregados)
         printf("* GERIR EMPREGADOS *\n\n");
         printf("1) Inserir empregados\n");
         printf("2) Mostrar empregados\n");
+        printf("3) Atualizar empregados\n");
         printf("\n0) <- Voltar\n\n");
 
         menu = devolverNumero("Introduza uma opcao");
@@ -38,6 +40,11 @@ void menuGerirEmpregados(Empregados *empregados)
             case 2:
             {
                 mostrarEmpregados(*empregados);
+                break;
+            }
+            case 3:
+            {
+                atualizarEmpregado(empregados);
                 break;
             }
         }
