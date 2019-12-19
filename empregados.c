@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "comum.h"
 #include "empregado.h"
@@ -26,7 +27,7 @@ void mostrarEmpregados(Empregados empregados)
 
 void adicionarEmpregado(Empregados *empregados, Empregado novoEmpregado)
 {
-    // Alocar espaço para um novo empregado.
+    // Guardar o novo empregado, aumentar o contador de empregados guardados, e alocar espaço para um novo empregado.
     empregados->listaEmpregados[empregados->tamanho] = novoEmpregado;
     empregados->tamanho++;
     empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
@@ -81,6 +82,18 @@ void atualizarEmpregado(Empregados *empregados)
             }
         }
         while (empregados->listaEmpregados[index].salario <= 0);
+
+        // Categoria
+        do
+        {
+            empregados->listaEmpregados[index].categoria = devolverCaracter("Categoria (M - Motorista / F - Fabril / A - Administrativo)");
+            empregados->listaEmpregados[index].categoria = toupper(empregados->listaEmpregados[index].categoria);
+            if (empregados->listaEmpregados[index].categoria != 'M' && empregados->listaEmpregados[index].categoria != 'F' && empregados->listaEmpregados[index].categoria != 'A')
+            {
+                printf("\n\t!! A categoria introduzida nao e valida.\n\n");
+            }
+        }
+        while (empregados->listaEmpregados[index].categoria != 'M' && empregados->listaEmpregados[index].categoria != 'F' && empregados->listaEmpregados[index].categoria != 'A');
 
         // Datas
         printf("\n\tData de nascimento:\n\n");

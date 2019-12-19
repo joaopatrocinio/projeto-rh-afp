@@ -5,5 +5,6 @@
 
 void desenharMenu();
 void menuGerirEmpregados(Empregados *empregados);
+void menuEstatisticas(Empregados *empregados);
 
 #endif

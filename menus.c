@@ -3,6 +3,7 @@
 
 #include "empregado.h"
 #include "empregados.h"
+#include "estatisticas.h"
 
 void desenharMenu()
 {
@@ -57,6 +58,51 @@ void menuGerirEmpregados(Empregados *empregados)
             case 5:
             {
                 eliminarEmpregados(empregados);
+                break;
+            }
+            case 0:
+            {
+                break;
+            }
+            default:
+            {
+                printf("\n\t!! Opcao invalida.\n\n");
+                pausa();
+                break;
+            }
+        }
+    }
+    while (menu != 0);
+}
+
+void menuEstatisticas(Empregados *empregados)
+{
+    int menu;
+    do
+    {
+        limparEcra();
+
+        printf("* ESTATISTICAS *\n\n");
+        printf("1) Numero atual de empregados por categoria\n");
+        printf("\n0) <- Voltar\n\n");
+
+        menu = devolverNumero("Introduza uma opcao");
+
+        switch (menu)
+        {
+            case 1:
+            {
+                mostrarNumeroDeEmpregadosPorCategoria(empregados);
+                break;
+            }
+            case 0:
+            {
+                break;
+            }
+            default:
+            {
+                printf("\n\t!! Opcao invalida.\n\n");
+                pausa();
                 break;
             }
         }

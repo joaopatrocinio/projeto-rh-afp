@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *categoriaDescricao(int categoria_id)
+char *devolveCategoria(char cat)
 {
-    switch (categoria_id)
+    switch (cat)
     {
-        case 1: return "Motorista";
-        case 2: return "Fabril";
-        case 3: return "Administrativo";
-        default: return "N/A";
+    case 'M':
+        return "Motorista";
+        break;
+    case 'F':
+        return "Fabril";
+        break;
+    case 'A':
+        return "Administrativo";
+        break;
+    default:
+        return "N/A";
+        break;
     }
 }

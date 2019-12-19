@@ -27,7 +27,14 @@ int main()
         case 1:
             menuGerirEmpregados(&empregados);
             break;
+        case 2:
+            menuEstatisticas(&empregados);
+            break;
+        case 0:
+            break;
         default:
+            printf("\n\t!! Opcao invalida.\n\n");
+            pausa();
             break;
         }
     }

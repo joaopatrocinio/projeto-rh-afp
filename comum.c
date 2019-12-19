@@ -5,6 +5,7 @@
 int devolverNumero(char string[])
 {
     int num;
+    fflush(stdin);
     printf("%s: ", string);
     scanf("%d", &num);
     return num;
@@ -13,6 +14,7 @@ int devolverNumero(char string[])
 float devolverFloat(char string[])
 {
     float num;
+    fflush(stdin);
     printf("%s: ", string);
     scanf("%f", &num);
     return num;

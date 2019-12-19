@@ -6,8 +6,9 @@
 #include "comum.h"
 #include "data.h"
 #include "empregado.h"
+#include "categoria.h"
 
-Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim, float salario)
+Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim, float salario, char categoria)
 {
     Empregado novoEmpregado;
     novoEmpregado.codigo = codigo;
@@ -18,6 +19,7 @@ Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Da
     novoEmpregado.ferias_inicio = ferias_inicio;
     novoEmpregado.ferias_fim = ferias_fim;
     novoEmpregado.salario = salario;
+    novoEmpregado.categoria = categoria;
     return novoEmpregado;
 }
 
@@ -65,6 +67,18 @@ Empregado inserirDadosEmpregado()
     }
     while (novoEmpregado.salario <= 0);
 
+    // Categoria
+    do
+    {
+        novoEmpregado.categoria = devolverCaracter("Categoria (M - Motorista / F - Fabril / A - Administrativo)");
+        novoEmpregado.categoria = toupper(novoEmpregado.categoria);
+        if (novoEmpregado.categoria != 'M' && novoEmpregado.categoria != 'F' && novoEmpregado.categoria != 'A')
+        {
+            printf("\n\t!! A categoria introduzida nao e valida.\n\n");
+        }
+    }
+    while (novoEmpregado.categoria != 'M' && novoEmpregado.categoria != 'F' && novoEmpregado.categoria != 'A');
+
     // Datas
     printf("\n\tData de nascimento:\n\n");
     novoEmpregado.data_nascimento = lerData();
@@ -83,6 +97,7 @@ void mostrarEmpregado(Empregado empregado)
     printf("-> Morada: %s\n", empregado.morada);
     printf("-> Genero: %c\n", empregado.genero);
     printf("-> Salario: %.2f\n", empregado.salario);
+    printf("-> Categoria: %s\n", devolveCategoria(empregado.categoria));
     printf("-> Data de nascimento: ");
     imprimirData(empregado.data_nascimento);
     printf("-> Data de inicio de ferias: ");
