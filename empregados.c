@@ -30,6 +30,7 @@ void adicionarEmpregado(Empregados *empregados, Empregado novoEmpregado)
     empregados->listaEmpregados[empregados->tamanho] = novoEmpregado;
     empregados->tamanho++;
     empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
+    if (!empregados->listaEmpregados) exit(0);
 }
 
 void atualizarEmpregado(Empregados *empregados)
@@ -41,10 +42,53 @@ void atualizarEmpregado(Empregados *empregados)
     {
         mostrarEmpregado(empregadoParaAtualizar);
 
-        empregados->listaEmpregados[index].codigo = devolverNumero("Novo codigo");
-        devolverString("Novo nome", empregados->listaEmpregados[index].nome);
-        devolverString("Nova morada", empregados->listaEmpregados[index].morada);
+        printf("\nIntroduza os novos detalhes do empregado:\n\n");
 
+        // Pedir codigo (deve ser maior que 0)
+        do
+        {
+            empregados->listaEmpregados[index].codigo = devolverNumero("Codigo");
+            if (empregados->listaEmpregados[index].codigo <= 0)
+            {
+                printf("\n\t!! O codigo introduzido nao e valido.\n\n");
+            }
+        }
+        while (empregados->listaEmpregados[index].codigo <= 0);
+
+        // Nome e morada
+        devolverString("Nome", empregados->listaEmpregados[index].nome);
+        devolverString("Morada", empregados->listaEmpregados[index].morada);
+
+        // Pedir genero (M ou F)
+        do
+        {
+            empregados->listaEmpregados[index].genero = devolverCaracter("Genero (M/F)");
+            empregados->listaEmpregados[index].genero = toupper(empregados->listaEmpregados[index].genero);
+            if (empregados->listaEmpregados[index].genero != 'M' && empregados->listaEmpregados[index].genero != 'F')
+            {
+                printf("\n\t!! O genero introduzido nao e valido.\n\n");
+            }
+        }
+        while (empregados->listaEmpregados[index].genero != 'M' && empregados->listaEmpregados[index].genero != 'F');
+
+        // Pedir salario (deve ser maior que 0)
+        do
+        {
+            empregados->listaEmpregados[index].salario = devolverFloat("Salario");
+            if (empregados->listaEmpregados[index].salario <= 0)
+            {
+                printf("\n\t!! O salario introduzido nao e valido.\n\n");
+            }
+        }
+        while (empregados->listaEmpregados[index].salario <= 0);
+
+        // Datas
+        printf("\n\tData de nascimento:\n\n");
+        empregados->listaEmpregados[index].data_nascimento = lerData();
+        printf("\n\tData de inicio de ferias:\n\n");
+        empregados->listaEmpregados[index].ferias_inicio = lerData();
+        printf("\n\tData de fim de ferias:\n\n");
+        empregados->listaEmpregados[index].ferias_fim = lerData();
     }
     else
     {
@@ -87,6 +131,7 @@ void eliminarEmpregados(Empregados *empregados)
             {
                 empregados->tamanho--;
                 empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
+                if (!empregados->listaEmpregados) exit(0);
                 printf("\n-> Empregado eliminado com sucesso.\n\n");
             }
         }
@@ -95,5 +140,17 @@ void eliminarEmpregados(Empregados *empregados)
     {
         printf("\n\t!! Empregado selecionado nao existe.\n\n");
     }
+    pausa();
+}
+
+void obterFichaDeEmpregadoPorCodigo(Empregados *empregados)
+{
+    int num = devolverNumero("\nInsira o codigo do empregado que deseja visualizar");
+    int index;
+    Empregado empregado = devolveEmpregadoPorCodigo(num, empregados, &index);
+    if (empregado.codigo != -1)
+        mostrarEmpregado(empregado);
+    else
+        printf("\n\t!! Empregado selecionado nao existe.\n\n");
     pausa();
 }

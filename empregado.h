@@ -13,7 +13,7 @@ typedef struct Empregado
     Data data_nascimento, ferias_inicio, ferias_fim;
 } Empregado;
 
-Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim);
+Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim, float salario);
 Empregado inserirDadosEmpregado();
 void mostrarEmpregado(Empregado empregado);
 

@@ -7,7 +7,7 @@
 #include "data.h"
 #include "empregado.h"
 
-Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim)
+Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Data data_nascimento, Data ferias_inicio, Data ferias_fim, float salario)
 {
     Empregado novoEmpregado;
     novoEmpregado.codigo = codigo;
@@ -17,6 +17,7 @@ Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Da
     novoEmpregado.data_nascimento = data_nascimento;
     novoEmpregado.ferias_inicio = ferias_inicio;
     novoEmpregado.ferias_fim = ferias_fim;
+    novoEmpregado.salario = salario;
     return novoEmpregado;
 }
 
@@ -26,7 +27,7 @@ Empregado inserirDadosEmpregado()
 
     printf("\n");
 
-    // Pedir codigo (tem que ser maior que 0)
+    // Pedir codigo (deve ser maior que 0)
     do
     {
         novoEmpregado.codigo = devolverNumero("Codigo");
@@ -37,6 +38,7 @@ Empregado inserirDadosEmpregado()
     }
     while (novoEmpregado.codigo <= 0);
 
+    // Nome e morada
     devolverString("Nome", novoEmpregado.nome);
     devolverString("Morada", novoEmpregado.morada);
 
@@ -51,6 +53,17 @@ Empregado inserirDadosEmpregado()
         }
     }
     while (novoEmpregado.genero != 'M' && novoEmpregado.genero != 'F');
+
+    // Pedir salario (deve ser maior que 0)
+    do
+    {
+        novoEmpregado.salario = devolverFloat("Salario");
+        if (novoEmpregado.salario <= 0)
+        {
+            printf("\n\t!! O salario introduzido nao e valido.\n\n");
+        }
+    }
+    while (novoEmpregado.salario <= 0);
 
     // Datas
     printf("\n\tData de nascimento:\n\n");
@@ -69,6 +82,7 @@ void mostrarEmpregado(Empregado empregado)
     printf("-> Nome: %s\n", empregado.nome);
     printf("-> Morada: %s\n", empregado.morada);
     printf("-> Genero: %c\n", empregado.genero);
+    printf("-> Salario: %.2f\n", empregado.salario);
     printf("-> Data de nascimento: ");
     imprimirData(empregado.data_nascimento);
     printf("-> Data de inicio de ferias: ");

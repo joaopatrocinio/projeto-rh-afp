@@ -10,6 +10,14 @@ int devolverNumero(char string[])
     return num;
 }
 
+float devolverFloat(char string[])
+{
+    float num;
+    printf("%s: ", string);
+    scanf("%f", &num);
+    return num;
+}
+
 void devolverString(char *texto, char *str)
 {
     char temp[200];

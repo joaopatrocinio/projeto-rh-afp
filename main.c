@@ -16,6 +16,7 @@ int main()
     // Começar lista de empregados com espaço para 1 empregado,
     // irá ser aumentado quando for preciso.
     empregados.listaEmpregados = (Empregado*) malloc(1 * sizeof(Empregado));
+    if (!empregados.listaEmpregados) exit(0);
 
     do
     {
