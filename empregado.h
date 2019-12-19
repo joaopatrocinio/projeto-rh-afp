@@ -9,6 +9,7 @@ typedef struct Empregado
     int codigo, categoria_id;
     char nome[51], morada[51];
     char genero;
+    float salario;
     Data data_nascimento, ferias_inicio, ferias_fim;
 } Empregado;
 

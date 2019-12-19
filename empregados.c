@@ -18,7 +18,7 @@ void mostrarEmpregados(Empregados empregados)
     }
     else
     {
-        printf("\n!! Nao existem empregados armazenados no programa.\n\n");
+        printf("\n\t!! Nao existem empregados armazenados no programa.\n\n");
     }
 
     pausa();
@@ -26,7 +26,7 @@ void mostrarEmpregados(Empregados empregados)
 
 void adicionarEmpregado(Empregados *empregados, Empregado novoEmpregado)
 {
-    // Alocar espaÃ§o para um novo empregado.
+    // Alocar espaço para um novo empregado.
     empregados->listaEmpregados[empregados->tamanho] = novoEmpregado;
     empregados->tamanho++;
     empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
@@ -34,32 +34,27 @@ void adicionarEmpregado(Empregados *empregados, Empregado novoEmpregado)
 
 void atualizarEmpregado(Empregados *empregados)
 {
-    int num = devolverNumero("Insira o codigo do empregado que quer atualizar");
+    int num = devolverNumero("\nInsira o codigo do empregado que quer atualizar");
     int index;
     Empregado empregadoParaAtualizar = devolveEmpregadoPorCodigo(num, empregados, &index);
-    printf("%d", index);
     if (empregadoParaAtualizar.codigo != -1)
     {
         mostrarEmpregado(empregadoParaAtualizar);
 
-        int codigo = devolverNumero("Novo codigo");
-        char nome[50];
-        devolverString("Novo nome", nome);
-        char morada[50];
-        devolverString("Nova morada", morada);
-
-        empregados->listaEmpregados[index].codigo = codigo;
-        strcpy(empregados->listaEmpregados[index].nome, nome);
-        strcpy(empregados->listaEmpregados[index].morada, morada);
+        empregados->listaEmpregados[index].codigo = devolverNumero("Novo codigo");
+        devolverString("Novo nome", empregados->listaEmpregados[index].nome);
+        devolverString("Nova morada", empregados->listaEmpregados[index].morada);
 
     }
     else
     {
-        printf("\n!! Empregado selecionado nao existe.\n");
+        printf("\n\t!! Empregado selecionado nao existe.\n\n");
     }
     pausa();
 }
 
+// Quando a função é executada deve ser feita uma validação ao código do empregado,
+// se este for = -1, significa que não foi encontrado um empregado com o codigo facultado.
 Empregado devolveEmpregadoPorCodigo(int codigo, Empregados *empregados, int *index)
 {
     Empregado empregadoVazio;
@@ -68,9 +63,37 @@ Empregado devolveEmpregadoPorCodigo(int codigo, Empregados *empregados, int *ind
     {
         if (empregados->listaEmpregados[i].codigo == codigo)
         {
-            *index = i;
+            *index = i; // Indice do empregado encontrado na lista de empregados
             return empregados->listaEmpregados[i];
         }
     }
     return empregadoVazio;
+}
+
+void eliminarEmpregados(Empregados *empregados)
+{
+    int codigo = devolverNumero("\nIntroduza o codigo do empregado que deseja eliminar");
+
+    int index; // Indice do empregado a eliminar
+    Empregado empregadoAEliminar = devolveEmpregadoPorCodigo(codigo, empregados, &index);
+
+    if (empregadoAEliminar.codigo != -1)
+    {
+        for (int i = index; i < empregados->tamanho; i++)
+        {
+            if (i + 1 < empregados->tamanho)
+                empregados->listaEmpregados[i] = empregados->listaEmpregados[i + 1];
+            else
+            {
+                empregados->tamanho--;
+                empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
+                printf("\n-> Empregado eliminado com sucesso.\n\n");
+            }
+        }
+    }
+    else
+    {
+        printf("\n\t!! Empregado selecionado nao existe.\n\n");
+    }
+    pausa();
 }

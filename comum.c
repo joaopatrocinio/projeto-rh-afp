@@ -19,6 +19,15 @@ void devolverString(char *texto, char *str)
     strcpy(str, temp);
 }
 
+char devolverCaracter(char string[])
+{
+    char res;
+    fflush(stdin);
+    printf("%s: ", string);
+    scanf("%c", &res);
+    return res;
+}
+
 void limparEcra()
 {
     system("cls || clear");

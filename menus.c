@@ -25,6 +25,7 @@ void menuGerirEmpregados(Empregados *empregados)
         printf("1) Inserir empregados\n");
         printf("2) Mostrar empregados\n");
         printf("3) Atualizar empregados\n");
+        printf("4) Eliminar empregados\n");
         printf("\n0) <- Voltar\n\n");
 
         menu = devolverNumero("Introduza uma opcao");
@@ -45,6 +46,11 @@ void menuGerirEmpregados(Empregados *empregados)
             case 3:
             {
                 atualizarEmpregado(empregados);
+                break;
+            }
+            case 4:
+            {
+                eliminarEmpregados(empregados);
                 break;
             }
         }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "comum.h"
 #include "data.h"
@@ -22,22 +23,41 @@ Empregado criarEmpregado(int codigo, char nome[], char morada[], char genero, Da
 Empregado inserirDadosEmpregado()
 {
     Empregado novoEmpregado;
-    printf("\nCodigo: ");
-    fflush(stdin);
-    scanf("%d", &novoEmpregado.codigo);
-    printf("Nome: ");
-    fflush(stdin);
-    scanf("%[^\n]", novoEmpregado.nome);
-    printf("Morada: ");
-    fflush(stdin);
-    scanf("%[^\n]", novoEmpregado.morada);
-    printf("Genero: ");
-    scanf(" %c", &novoEmpregado.genero);
-    printf("Data de nascimento:\n");
+
+    printf("\n");
+
+    // Pedir codigo (tem que ser maior que 0)
+    do
+    {
+        novoEmpregado.codigo = devolverNumero("Codigo");
+        if (novoEmpregado.codigo <= 0)
+        {
+            printf("\n\t!! O codigo introduzido nao e valido.\n\n");
+        }
+    }
+    while (novoEmpregado.codigo <= 0);
+
+    devolverString("Nome", novoEmpregado.nome);
+    devolverString("Morada", novoEmpregado.morada);
+
+    // Pedir genero (M ou F)
+    do
+    {
+        novoEmpregado.genero = devolverCaracter("Genero (M/F)");
+        novoEmpregado.genero = toupper(novoEmpregado.genero);
+        if (novoEmpregado.genero != 'M' && novoEmpregado.genero != 'F')
+        {
+            printf("\n\t!! O genero introduzido nao e valido.\n\n");
+        }
+    }
+    while (novoEmpregado.genero != 'M' && novoEmpregado.genero != 'F');
+
+    // Datas
+    printf("\n\tData de nascimento:\n\n");
     novoEmpregado.data_nascimento = lerData();
-    printf("\nData de inicio de ferias:\n");
+    printf("\n\tData de inicio de ferias:\n\n");
     novoEmpregado.ferias_inicio = lerData();
-    printf("\nData de fim de ferias:\n");
+    printf("\n\tData de fim de ferias:\n\n");
     novoEmpregado.ferias_fim = lerData();
 
     return novoEmpregado;
@@ -48,7 +68,8 @@ void mostrarEmpregado(Empregado empregado)
     printf("\n-> Codigo: %d\n", empregado.codigo);
     printf("-> Nome: %s\n", empregado.nome);
     printf("-> Morada: %s\n", empregado.morada);
-    printf("-> Data de Nascimento: ");
+    printf("-> Genero: %c\n", empregado.genero);
+    printf("-> Data de nascimento: ");
     imprimirData(empregado.data_nascimento);
     printf("-> Data de inicio de ferias: ");
     imprimirData(empregado.ferias_inicio);
