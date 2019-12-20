@@ -92,16 +92,16 @@ Empregado inserirDadosEmpregado()
 
 void mostrarEmpregado(Empregado empregado)
 {
-    printf("\n-> Codigo: %d\n", empregado.codigo);
-    printf("-> Nome: %s\n", empregado.nome);
-    printf("-> Morada: %s\n", empregado.morada);
-    printf("-> Genero: %c\n", empregado.genero);
-    printf("-> Salario: %.2f\n", empregado.salario);
-    printf("-> Categoria: %s\n", devolveCategoria(empregado.categoria));
-    printf("-> Data de nascimento: ");
+    printf("\n-> %-10s: %d\n", "Codigo", empregado.codigo);
+    printf("-> %-10s: %s\n", "Nome", empregado.nome);
+    printf("-> %-10s: %s\n", "Morada", empregado.morada);
+    printf("-> %-10s: %c\n", "Genero", empregado.genero);
+    printf("-> %-10s: %.2f EUR\n", "Salario", empregado.salario);
+    printf("-> %-10s: %s\n", "Categoria", devolveCategoria(empregado.categoria));
+    printf("-> %-25s: ", "Data de nascimento");
     imprimirData(empregado.data_nascimento);
-    printf("-> Data de inicio de ferias: ");
+    printf("-> %-25s: ", "Data de inicio de ferias");
     imprimirData(empregado.ferias_inicio);
-    printf("-> Data de fim de ferias: ");
+    printf("-> %-25s: ", "Data de fim de ferias");
     imprimirData(empregado.ferias_fim);
 }

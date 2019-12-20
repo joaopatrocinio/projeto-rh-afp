@@ -18,6 +18,10 @@ int main()
     empregados.listaEmpregados = (Empregado*) malloc(1 * sizeof(Empregado));
     if (!empregados.listaEmpregados) exit(0);
 
+    // Empregado de teste, remover na build final
+    Empregado empregadoTeste = criarEmpregado(1, "Joao Patrocinio", "Rua da Uniao, N. 4, Gaio", 'M', criarData(25, 1, 2001), criarData(23, 12, 2019), criarData(6, 1, 2020), 1543, 'A');
+    adicionarEmpregado(&empregados, empregadoTeste);
+
     do
     {
         desenharMenu();
