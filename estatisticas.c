@@ -33,7 +33,7 @@ void mostrarNumeroDeEmpregadosPorCategoria(Empregados *empregados)
     while (cat != 'M' && cat != 'F' && cat != 'A');
 
     int num = numeroDeEmpregadosPorCategoria(empregados, cat);
-    printf("\n-> Exist%s %d empregados na categoria %s.\n\n", (num == 1 ? "e" : "em"), num, devolveCategoria(cat));
+    printf("\n-> Exist%s %d empregad%s na categoria %s.\n\n", (num == 1 ? "e" : "em"), num, (num == 1 ? "o" : "os"), devolveCategoria(cat));
 
     pausa();
 }
