@@ -84,6 +84,7 @@ void menuEstatisticas(Empregados *empregados)
 
         printf("* ESTATISTICAS *\n\n");
         printf("1) Numero atual de empregados por categoria\n");
+        printf("2) Total de salarios a pagar\n");
         printf("\n0) <- Voltar\n\n");
 
         menu = devolverNumero("Introduza uma opcao");
@@ -91,20 +92,17 @@ void menuEstatisticas(Empregados *empregados)
         switch (menu)
         {
             case 1:
-            {
                 mostrarNumeroDeEmpregadosPorCategoria(empregados);
                 break;
-            }
-            case 0:
-            {
+            case 2:
+                totalSalariosAPagar(empregados);
                 break;
-            }
+            case 0:
+                break;
             default:
-            {
                 printf("\n\t!! Opcao invalida.\n\n");
                 pausa();
                 break;
-            }
         }
     }
     while (menu != 0);
