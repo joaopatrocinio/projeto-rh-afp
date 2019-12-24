@@ -93,3 +93,30 @@ void totalSalariosAPagar(Empregados *empregados)
 
     pausa();
 }
+
+void mediaSalariosAPagar(Empregados *empregados)
+{
+    char categoria;
+
+    // Validar categoria
+    do
+    {
+        categoria = devolverCaracter("\nFiltrar por categoria (T - Todas | F - Fabril | M - Motorista | A - Administrativo)");
+        categoria = toupper(categoria);
+
+        if (categoria != 'T' && categoria != 'F' && categoria != 'M' && categoria != 'A')
+        {
+            printf("\n\t!! Categoria introduzida nao e valida.\n");
+        }
+    }
+    while (categoria != 'T' && categoria != 'F' && categoria != 'M' && categoria != 'A');
+
+    // A função de calcular o total de salários a pagar é reutilizada, mas o parâmetro de género
+    // é sempre 'T', ou seja, o resultado não tende em conta o genero do empregado.
+    float salarioTotal = calcularSalariosAPagar(empregados, categoria, 'T');
+    float media = salarioTotal / empregados->tamanho;
+
+    printf("\n-> Media de salarios a pagar: %.2f EUR\n\n", media);
+
+    pausa();
+}

@@ -10,9 +10,10 @@ void desenharMenu()
     limparEcra();
 
     printf("## Projeto AFP - Gestao de Recursos Humanos\n\n");
-    printf("1) Gerir empregados\n");
-    printf("2) Estatisticas\n");
-    printf("\n0) Sair\n\n");
+    printf("* MENU INICIAL *\n\n");
+    printf("(1) Gerir empregados\n");
+    printf("(2) Estatisticas\n");
+    printf("\n(0) Sair\n\n");
 }
 
 void menuGerirEmpregados(Empregados *empregados)
@@ -22,13 +23,14 @@ void menuGerirEmpregados(Empregados *empregados)
     {
         limparEcra();
 
+        printf("## Projeto AFP - Gestao de Recursos Humanos\n\n");
         printf("* GERIR EMPREGADOS *\n\n");
-        printf("1) Inserir empregados\n");
-        printf("2) Mostrar todos os empregados\n");
-        printf("3) Mostrar empregado por codigo\n");
-        printf("4) Atualizar empregados\n");
-        printf("5) Eliminar empregados\n");
-        printf("\n0) <- Voltar\n\n");
+        printf("(1) Inserir empregados\n");
+        printf("(2) Mostrar todos os empregados\n");
+        printf("(3) Mostrar empregado por codigo\n");
+        printf("(4) Atualizar empregados\n");
+        printf("(5) Eliminar empregados\n");
+        printf("\n(0) <- Voltar\n\n");
 
         menu = devolverNumero("Introduza uma opcao");
 
@@ -82,10 +84,12 @@ void menuEstatisticas(Empregados *empregados)
     {
         limparEcra();
 
+        printf("## Projeto AFP - Gestao de Recursos Humanos\n\n");
         printf("* ESTATISTICAS *\n\n");
-        printf("1) Numero atual de empregados por categoria\n");
-        printf("2) Total de salarios a pagar\n");
-        printf("\n0) <- Voltar\n\n");
+        printf("(1) Numero atual de empregados por categoria\n");
+        printf("(2) Total de salarios a pagar\n");
+        printf("(3) Media de salarios a pagar\n");
+        printf("\n(0) <- Voltar\n\n");
 
         menu = devolverNumero("Introduza uma opcao");
 
@@ -96,6 +100,9 @@ void menuEstatisticas(Empregados *empregados)
                 break;
             case 2:
                 totalSalariosAPagar(empregados);
+                break;
+            case 3:
+                mediaSalariosAPagar(empregados);
                 break;
             case 0:
                 break;

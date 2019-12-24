@@ -7,5 +7,6 @@ int numeroDeEmpregadosPorCategoria(Empregados *empregados, char cat);
 void mostrarNumeroDeEmpregadosPorCategoria(Empregados *empregados);
 float calcularSalariosAPagar(Empregados *empregados, char categoria, char genero);
 void totalSalariosAPagar(Empregados *empregados);
+void mediaSalariosAPagar(Empregados *empregados);
 
 #endif // ESTATISTICAS_H_INCLUDED
