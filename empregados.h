@@ -16,5 +16,7 @@ void atualizarEmpregado(Empregados *empregados);
 Empregado devolveEmpregadoPorCodigo(int codigo, Empregados *empregados, int *index);
 void eliminarEmpregados(Empregados *empregados);
 void obterFichaDeEmpregadoPorCodigo(Empregados *empregados);
+Empregado obterEmpregadoMaisNovo(Empregados empregados);
+Empregado obterEmpregadoMaisVelho(Empregados empregados);
 
 #endif

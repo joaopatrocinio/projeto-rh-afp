@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
 
 #include "comum.h"
 #include "empregado.h"
@@ -166,4 +167,40 @@ void obterFichaDeEmpregadoPorCodigo(Empregados *empregados)
     else
         printf("\n\t!! Empregado selecionado nao existe.\n\n");
     pausa();
+}
+
+Empregado obterEmpregadoMaisNovo(Empregados empregados)
+{
+    int codigo = -1;
+    int idade = INT_MAX;
+
+    for (int i = 0; i < empregados.tamanho; i++)
+    {
+        if (calcularIdade(empregados.listaEmpregados[i].data_nascimento) < idade)
+        {
+            idade = calcularIdade(empregados.listaEmpregados[i].data_nascimento);
+            codigo = empregados.listaEmpregados[i].codigo;
+        }
+    }
+
+    int index;
+    return devolveEmpregadoPorCodigo(codigo, &empregados, &index);
+}
+
+Empregado obterEmpregadoMaisVelho(Empregados empregados)
+{
+    int codigo = -1;
+    int idade = 0;
+
+    for (int i = 0; i < empregados.tamanho; i++)
+    {
+        if (calcularIdade(empregados.listaEmpregados[i].data_nascimento) > idade)
+        {
+            idade = calcularIdade(empregados.listaEmpregados[i].data_nascimento);
+            codigo = empregados.listaEmpregados[i].codigo;
+        }
+    }
+
+    int index;
+    return devolveEmpregadoPorCodigo(codigo, &empregados, &index);
 }

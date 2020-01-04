@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "data.h"
 
@@ -96,6 +97,39 @@ void imprimirDataExtenso(Data data)
             break;
         }
     }
-    
+
     printf("%02d de %s de %04d\n", data.dia, mes_extenso, data.ano);
+}
+
+Data dataAtual()
+{
+    int dia, mes, ano;
+
+	time_t now;
+	time(&now);
+
+	struct tm *local = localtime(&now);
+
+    dia = local->tm_mday;
+    mes = local->tm_mon + 1;   	    // get month of year (0 to 11)
+    ano = local->tm_year + 1900;	// get year since 1900
+
+    Data data = criarData(dia, mes, ano);
+    return data;
+}
+
+int calcularIdade(Data data_nasc)
+{
+    Data data_atual = dataAtual();
+
+    int idade = data_atual.ano - data_nasc.ano;
+
+    // verificar se ja fez anos no ano corrente
+    if (data_atual.mes <= data_nasc.mes && data_atual.dia <= data_nasc.dia)
+    {
+        // retirar um ano se ainda não fez
+        idade--;
+    }
+
+    return idade;
 }

@@ -98,6 +98,7 @@ void mostrarEmpregado(Empregado empregado)
     printf("-> %-10s: %c\n", "Genero", empregado.genero);
     printf("-> %-10s: %.2f EUR\n", "Salario", empregado.salario);
     printf("-> %-10s: %s\n", "Categoria", devolveCategoria(empregado.categoria));
+    printf("-> %-10s: %d an%s\n", "Idade", calcularIdade(empregado.data_nascimento), (calcularIdade(empregado.data_nascimento) != 1 ? "os" : "o"));
     printf("-> %-25s: ", "Data de nascimento");
     imprimirData(empregado.data_nascimento);
     printf("-> %-25s: ", "Data de inicio de ferias");

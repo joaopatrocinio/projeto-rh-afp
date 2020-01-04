@@ -10,5 +10,7 @@ Data criarData(int dia, int mes, int ano);
 Data lerData();
 void imprimirData(Data data);
 void imprimirDataExtenso(Data data);
+Data dataAtual();
+int calcularIdade(Data data_nasc);
 
 #endif

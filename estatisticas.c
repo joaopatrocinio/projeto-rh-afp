@@ -5,18 +5,18 @@
 #include "comum.h"
 #include "empregados.h"
 
-int numeroDeEmpregadosPorCategoria(Empregados *empregados, char cat)
+int numeroDeEmpregadosPorCategoria(Empregados empregados, char cat)
 {
     int contar = 0;
 
-    for (int i = 0; i < empregados->tamanho; i++)
-        if (empregados->listaEmpregados[i].categoria == cat)
+    for (int i = 0; i < empregados.tamanho; i++)
+        if (empregados.listaEmpregados[i].categoria == cat)
             contar++;
 
     return contar;
 }
 
-void mostrarNumeroDeEmpregadosPorCategoria(Empregados *empregados)
+void mostrarNumeroDeEmpregadosPorCategoria(Empregados empregados)
 {
     char cat;
 
@@ -38,17 +38,17 @@ void mostrarNumeroDeEmpregadosPorCategoria(Empregados *empregados)
     pausa();
 }
 
-float calcularSalariosAPagar(Empregados *empregados, char categoria, char genero)
+float calcularSalariosAPagar(Empregados empregados, char categoria, char genero)
 {
     float somaSalarios = 0;
 
-    for (int i = 0; i < empregados->tamanho; i++)
+    for (int i = 0; i < empregados.tamanho; i++)
     {
-        if (empregados->listaEmpregados[i].categoria == categoria || categoria == 'T')
+        if (empregados.listaEmpregados[i].categoria == categoria || categoria == 'T')
         {
-            if (empregados->listaEmpregados[i].genero == genero || genero == 'T')
+            if (empregados.listaEmpregados[i].genero == genero || genero == 'T')
             {
-                somaSalarios += empregados->listaEmpregados[i].salario;
+                somaSalarios += empregados.listaEmpregados[i].salario;
             }
         }
     }
@@ -56,7 +56,7 @@ float calcularSalariosAPagar(Empregados *empregados, char categoria, char genero
     return somaSalarios;
 }
 
-void totalSalariosAPagar(Empregados *empregados)
+void totalSalariosAPagar(Empregados empregados)
 {
     char categoria;
 
@@ -94,7 +94,7 @@ void totalSalariosAPagar(Empregados *empregados)
     pausa();
 }
 
-void mediaSalariosAPagar(Empregados *empregados)
+void mediaSalariosAPagar(Empregados empregados)
 {
     char categoria;
 
@@ -114,9 +114,40 @@ void mediaSalariosAPagar(Empregados *empregados)
     // A função de calcular o total de salários a pagar é reutilizada, mas o parâmetro de género
     // é sempre 'T', ou seja, o resultado não tende em conta o genero do empregado.
     float salarioTotal = calcularSalariosAPagar(empregados, categoria, 'T');
-    float media = salarioTotal / empregados->tamanho;
+
+    // Contar numero de empregados na categoria escolhida para calcular a media aritmetica.
+    int contar = 0;
+
+    if (categoria != 'T')
+    {
+         for (int i = 0; i < empregados.tamanho; i++)
+        {
+            if (empregados.listaEmpregados[i].categoria == categoria)
+            {
+                contar++;
+            }
+        }
+    }
+    else contar = empregados.tamanho;
+
+    if (contar == 0) contar = 1; // evitar divisao por zero se nao houver empregados
+    float media = salarioTotal / contar;
 
     printf("\n-> Media de salarios a pagar: %.2f EUR\n\n", media);
 
+    pausa();
+}
+
+void empregadoMaisNovo(Empregados empregados)
+{
+    Empregado empregadoMaisNovo = obterEmpregadoMaisNovo(empregados);
+    mostrarEmpregado(empregadoMaisNovo);
+    pausa();
+}
+
+void empregadoMaisVelho(Empregados empregados)
+{
+    Empregado empregadoMaisVelho = obterEmpregadoMaisVelho(empregados);
+    mostrarEmpregado(empregadoMaisVelho);
     pausa();
 }
