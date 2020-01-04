@@ -32,7 +32,10 @@ int main()
             menuGerirEmpregados(&empregados);
             break;
         case 2:
-            menuEstatisticas(&empregados);
+            menuEstatisticas(empregados);
+            break;
+        case 3:
+            conjuntoAtualFichasEmpregados(empregados);
             break;
         case 0:
             break;

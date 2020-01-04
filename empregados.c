@@ -204,3 +204,41 @@ Empregado obterEmpregadoMaisVelho(Empregados empregados)
     int index;
     return devolveEmpregadoPorCodigo(codigo, &empregados, &index);
 }
+
+void conjuntoAtualFichasEmpregados(Empregados empregados)
+{
+    char categoria;
+
+    // Validar categoria
+    do
+    {
+        categoria = devolverCaracter("\nFiltrar por categoria (T - Todas | F - Fabril | M - Motorista | A - Administrativo)");
+        categoria = toupper(categoria);
+
+        if (categoria != 'T' && categoria != 'F' && categoria != 'M' && categoria != 'A')
+        {
+            printf("\n\t!! Categoria introduzida nao e valida.\n");
+        }
+    }
+    while (categoria != 'T' && categoria != 'F' && categoria != 'M' && categoria != 'A');
+
+    // Validar genero
+    char genero;
+
+    do
+    {
+        genero = devolverCaracter("\nFiltrar por genero (T - Todos | M - Masculino | F - Feminino)");
+        genero = toupper(genero);
+
+        if (genero != 'T' && genero != 'M' && genero != 'F')
+        {
+            printf("\n\t!! Genero introduzida nao e valido.\n");
+        }
+    }
+    while (genero != 'T' && genero != 'M' && genero != 'F');
+
+    // Criar nova lista de empregados de acordo com os filtros inseridos pelo utilizador
+    Empregados empregadosFiltrados;
+
+    pausa();
+}

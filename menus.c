@@ -13,6 +13,7 @@ void desenharMenu()
     printf("* MENU INICIAL *\n\n");
     printf("(1) Gerir empregados\n");
     printf("(2) Estatisticas\n");
+    printf("(3) Conjunto atual de fichas de empregados\n");
     printf("\n(0) Sair\n\n");
 }
 
@@ -77,7 +78,7 @@ void menuGerirEmpregados(Empregados *empregados)
     while (menu != 0);
 }
 
-void menuEstatisticas(Empregados *empregados)
+void menuEstatisticas(Empregados empregados)
 {
     int menu;
     do
@@ -98,19 +99,19 @@ void menuEstatisticas(Empregados *empregados)
         switch (menu)
         {
             case 1:
-                mostrarNumeroDeEmpregadosPorCategoria(*empregados);
+                mostrarNumeroDeEmpregadosPorCategoria(empregados);
                 break;
             case 2:
-                totalSalariosAPagar(*empregados);
+                totalSalariosAPagar(empregados);
                 break;
             case 3:
-                mediaSalariosAPagar(*empregados);
+                mediaSalariosAPagar(empregados);
                 break;
             case 4:
-                empregadoMaisNovo(*empregados);
+                empregadoMaisNovo(empregados);
                 break;
             case 5:
-                empregadoMaisVelho(*empregados);
+                empregadoMaisVelho(empregados);
                 break;
             case 0:
                 break;

@@ -141,13 +141,28 @@ void mediaSalariosAPagar(Empregados empregados)
 void empregadoMaisNovo(Empregados empregados)
 {
     Empregado empregadoMaisNovo = obterEmpregadoMaisNovo(empregados);
-    mostrarEmpregado(empregadoMaisNovo);
+    if (empregadoMaisNovo.codigo != -1)
+    {
+        mostrarEmpregado(empregadoMaisNovo);
+    }
+    else
+    {
+        printf("\n## Nao existem empregados.\n\n");
+    }
+
     pausa();
 }
 
 void empregadoMaisVelho(Empregados empregados)
 {
     Empregado empregadoMaisVelho = obterEmpregadoMaisVelho(empregados);
-    mostrarEmpregado(empregadoMaisVelho);
+    if (empregadoMaisVelho.codigo != -1)
+    {
+        mostrarEmpregado(empregadoMaisVelho);
+    }
+    else
+    {
+        printf("\n## Nao existem empregados.\n\n");
+    }
     pausa();
 }

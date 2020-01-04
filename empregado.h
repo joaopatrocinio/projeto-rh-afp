@@ -6,7 +6,7 @@
 
 typedef struct Empregado
 {
-    int codigo, categoria_id;
+    int codigo;
     char nome[51], morada[51];
     char genero, categoria;
     float salario;
