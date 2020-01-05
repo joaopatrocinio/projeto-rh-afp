@@ -205,6 +205,24 @@ Empregado obterEmpregadoMaisVelho(Empregados empregados)
     return devolveEmpregadoPorCodigo(codigo, &empregados, &index);
 }
 
+void ordenarEmpregadosAlfabeticamente(Empregados *empregados)
+{
+    Empregado temp;
+
+    for (int i = 0; i < empregados->tamanho - 1; i++)
+    {
+        for (int j = i + 1; j < empregados->tamanho; j++)
+        {
+            if (strcmp(empregados->listaEmpregados[i].nome, empregados->listaEmpregados[j].nome) > 0)
+            {
+                temp = empregados->listaEmpregados[i];
+                empregados->listaEmpregados[i] = empregados->listaEmpregados[j];
+                empregados->listaEmpregados[j] = temp;
+            }
+        }
+    }
+}
+
 void conjuntoAtualFichasEmpregados(Empregados empregados)
 {
     char categoria;
@@ -232,13 +250,31 @@ void conjuntoAtualFichasEmpregados(Empregados empregados)
 
         if (genero != 'T' && genero != 'M' && genero != 'F')
         {
-            printf("\n\t!! Genero introduzida nao e valido.\n");
+            printf("\n\t!! Genero introduzido nao e valido.\n");
         }
     }
     while (genero != 'T' && genero != 'M' && genero != 'F');
 
-    // Criar nova lista de empregados de acordo com os filtros inseridos pelo utilizador
+    // Criar nova lista de empregados
     Empregados empregadosFiltrados;
+    empregadosFiltrados.listaEmpregados = (Empregado*) malloc(1 * sizeof(Empregado));
+    if (!empregados.listaEmpregados) exit(0);
+    empregadosFiltrados.tamanho = 0;
 
-    pausa();
+    // Percorre a lista original de empregados e adiciona à nova lista aqueles que correspondem
+    // ao filtro escolhido pelo utilizador
+    for (int i = 0; i < empregados.tamanho; i++)
+    {
+        if (empregados.listaEmpregados[i].categoria == categoria || categoria == 'T')
+        {
+            if (empregados.listaEmpregados[i].genero == genero || genero == 'T')
+            {
+                adicionarEmpregado(&empregadosFiltrados, empregados.listaEmpregados[i]);
+            }
+        }
+    }
+
+    // Ordenar a lista filtrada por ordem alfabética, usando uma variável temporária para auxílio.
+    ordenarEmpregadosAlfabeticamente(&empregadosFiltrados);
+    mostrarEmpregados(empregadosFiltrados);
 }

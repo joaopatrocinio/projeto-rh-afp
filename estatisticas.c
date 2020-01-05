@@ -23,17 +23,27 @@ void mostrarNumeroDeEmpregadosPorCategoria(Empregados empregados)
     // Validar categoria
     do
     {
-        cat = devolverCaracter("Categoria (M - Motorista / F - Fabril / A - Administrativo)");
+        cat = devolverCaracter("Categoria (T - Todas / M - Motorista / F - Fabril / A - Administrativo)");
         cat = toupper(cat);
-        if (cat != 'M' && cat != 'F' && cat != 'A')
+        if (cat != 'M' && cat != 'F' && cat != 'A' && cat != 'T')
         {
             printf("\n\t!! A categoria introduzida nao e valida.\n\n");
         }
     }
-    while (cat != 'M' && cat != 'F' && cat != 'A');
+    while (cat != 'M' && cat != 'F' && cat != 'A' && cat != 'T');
 
-    int num = numeroDeEmpregadosPorCategoria(empregados, cat);
-    printf("\n-> Exist%s %d empregad%s na categoria %s.\n\n", (num == 1 ? "e" : "em"), num, (num == 1 ? "o" : "os"), devolveCategoria(cat));
+    int num;
+
+    if (cat != 'T')
+    {
+        num = numeroDeEmpregadosPorCategoria(empregados, cat);
+        printf("\n-> Exist%s %d empregad%s na categoria %s.\n\n", (num == 1 ? "e" : "em"), num, (num == 1 ? "o" : "os"), devolveCategoria(cat));
+    }
+    else
+    {
+        num = empregados.tamanho;
+        printf("\n-> Exist%s %d empregad%s no total.\n\n", (num == 1 ? "e" : "em"), num, (num == 1 ? "o" : "os"));
+    }
 
     pausa();
 }

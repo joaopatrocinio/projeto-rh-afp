@@ -18,6 +18,8 @@ void eliminarEmpregados(Empregados *empregados);
 void obterFichaDeEmpregadoPorCodigo(Empregados *empregados);
 Empregado obterEmpregadoMaisNovo(Empregados empregados);
 Empregado obterEmpregadoMaisVelho(Empregados empregados);
+void ordenarEmpregadosAlfabeticamente(Empregados *empregados);
 void conjuntoAtualFichasEmpregados(Empregados empregados);
+
 
 #endif
