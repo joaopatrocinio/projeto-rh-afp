@@ -13,7 +13,7 @@ void desenharMenu()
     printf("* MENU INICIAL *\n\n");
     printf("(1) Gerir empregados\n");
     printf("(2) Estatisticas\n");
-    printf("(3) Conjunto atual de fichas de empregados\n");
+    printf("(3) Conjunto atual de fichas de empregados (A-Z)\n");
     printf("\n(0) Sair\n\n");
 }
 

@@ -20,14 +20,12 @@ int main()
     empregados.tamanho = 0;
 
     // Empregado de teste, remover na build final
-    Empregado empregadoTeste = criarEmpregado(1, "Joao Patrocinio", "Rua da Uniao, N. 4, Gaio", 'M', criarData(25, 1, 2001), criarData(23, 12, 2019), criarData(6, 1, 2020), 1543, 'A');
+    Empregado empregadoTeste = criarEmpregado(1, "Joao Patrocinio", "Rua da Uniao, N. 4, Moita", 'M', criarData(25, 1, 2001), criarData(23, 12, 2019), criarData(6, 1, 2020), 1543, 'A');
     adicionarEmpregado(&empregados, empregadoTeste);
-    Empregado empregadoTeste2 = criarEmpregado(2, "Maria Alberta", "Rua das Oliveiras, N. 8, Pinhal Novo", 'F', criarData(12, 6, 2003), criarData(23, 12, 2019), criarData(6, 1, 2020), 1454, 'F');
+    Empregado empregadoTeste2 = criarEmpregado(2, "Angela Ferreira", "Rua das Oliveiras, N. 8, Pinhal Novo", 'F', criarData(12, 6, 2003), criarData(6, 1, 2020), criarData(17, 1, 2020), 1454, 'F');
     adicionarEmpregado(&empregados, empregadoTeste2);
-    Empregado empregadoTeste3 = criarEmpregado(3, "Rui Jesus", "Rua da Paz, N. 32, Rossio", 'M', criarData(22, 7, 2002), criarData(23, 12, 2019), criarData(6, 1, 2020), 1654, 'M');
+    Empregado empregadoTeste3 = criarEmpregado(3, "Bruno Marques", "Rua da Paz, N. 32, Barreiro", 'M', criarData(22, 7, 2002), criarData(17, 1, 2020), criarData(5, 2, 2020), 1654, 'M');
     adicionarEmpregado(&empregados, empregadoTeste3);
-    Empregado empregadoTeste4 = criarEmpregado(4, "Luis Oliveira", "Rua das Laranjeiras, N. 82, Barreiro", 'M', criarData(2, 8, 2000), criarData(23, 12, 2019), criarData(6, 1, 2020), 1123, 'A');
-    adicionarEmpregado(&empregados, empregadoTeste4);
 
     do
     {

@@ -137,24 +137,42 @@ void eliminarEmpregados(Empregados *empregados)
 
     if (empregadoAEliminar.codigo != -1)
     {
-        for (int i = index; i < empregados->tamanho; i++)
+        mostrarEmpregado(empregadoAEliminar);
+
+        char continuar;
+        do
         {
-            if (i + 1 < empregados->tamanho)
-                empregados->listaEmpregados[i] = empregados->listaEmpregados[i + 1];
-            else
+            continuar = devolverCaracter("Tem a certeza que deseja eliminar o empregado (S/N)");
+            continuar = toupper(continuar);
+            if (continuar != 'S' && continuar != 'N')
             {
-                empregados->tamanho--;
-                empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
-                if (!empregados->listaEmpregados) exit(0);
-                printf("\n-> Empregado eliminado com sucesso.\n\n");
+                printf("\n\t## Opcao invalida.\n");
+            }
+        }
+        while (continuar != 'S' && continuar != 'N');
+
+        if (continuar == 'S')
+        {
+            for (int i = index; i < empregados->tamanho; i++)
+            {
+                if (i + 1 < empregados->tamanho)
+                    empregados->listaEmpregados[i] = empregados->listaEmpregados[i + 1];
+                else
+                {
+                    empregados->tamanho--;
+                    empregados->listaEmpregados = realloc(empregados->listaEmpregados, (empregados->tamanho * sizeof(Empregado) + sizeof(Empregado)));
+                    if (!empregados->listaEmpregados) exit(0);
+                    printf("\n-> Empregado eliminado com sucesso.\n\n");
+                    pausa();
+                }
             }
         }
     }
     else
     {
         printf("\n\t!! Empregado selecionado nao existe.\n\n");
+        pausa();
     }
-    pausa();
 }
 
 void obterFichaDeEmpregadoPorCodigo(Empregados *empregados)
