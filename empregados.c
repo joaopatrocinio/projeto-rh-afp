@@ -142,7 +142,7 @@ void eliminarEmpregados(Empregados *empregados)
         char continuar;
         do
         {
-            continuar = devolverCaracter("Tem a certeza que deseja eliminar o empregado (S/N)");
+            continuar = devolverCaracter("\nTem a certeza que deseja eliminar o empregado (S/N)");
             continuar = toupper(continuar);
             if (continuar != 'S' && continuar != 'N')
             {

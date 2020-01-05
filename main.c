@@ -19,7 +19,7 @@ int main()
     if (!empregados.listaEmpregados) exit(0);
     empregados.tamanho = 0;
 
-    // Empregado de teste, remover na build final
+    // Empregados de teste, remover na build final
     Empregado empregadoTeste = criarEmpregado(1, "Joao Patrocinio", "Rua da Uniao, N. 4, Moita", 'M', criarData(25, 1, 2001), criarData(23, 12, 2019), criarData(6, 1, 2020), 1543, 'A');
     adicionarEmpregado(&empregados, empregadoTeste);
     Empregado empregadoTeste2 = criarEmpregado(2, "Angela Ferreira", "Rua das Oliveiras, N. 8, Pinhal Novo", 'F', criarData(12, 6, 2003), criarData(6, 1, 2020), criarData(17, 1, 2020), 1454, 'F');
