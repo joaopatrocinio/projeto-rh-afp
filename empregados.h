@@ -20,6 +20,12 @@ Empregado obterEmpregadoMaisNovo(Empregados empregados);
 Empregado obterEmpregadoMaisVelho(Empregados empregados);
 void ordenarEmpregadosAlfabeticamente(Empregados *empregados);
 void conjuntoAtualFichasEmpregados(Empregados empregados);
-
+void matrizNumeroEmpregados(Empregados empregados);
+int importarEmpregados(char *sourceFile, Empregados *empregados);
+void pedirImportarEmpregados(Empregados *empregados);
+int exportarEmpregados(char *sourceFile, Empregados empregados);
+void pedirExportarEmpregados(Empregados empregados);
+int validarCodigoExistente(Empregados empregados, int codigo);
+void empregadosDeFeriasNumaData(Empregados empregados, Data dataPesquisa);
 
 #endif

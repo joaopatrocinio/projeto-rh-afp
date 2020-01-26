@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "empregado.h"
 #include "empregados.h"
@@ -14,6 +15,10 @@ void desenharMenu()
     printf("(1) Gerir empregados\n");
     printf("(2) Estatisticas\n");
     printf("(3) Conjunto atual de fichas de empregados (A-Z)\n");
+    printf("(4) Matriz com numero de empregados por genero e categoria\n");
+    printf("(5) Empregados de ferias numa determinada data\n");
+    printf("(6) Importar empregados\n");
+    printf("(7) Exportar empregados\n");
     printf("\n(0) Sair\n\n");
 }
 
@@ -39,7 +44,7 @@ void menuGerirEmpregados(Empregados *empregados)
         {
             case 1:
             {
-                Empregado novoEmpregado = inserirDadosEmpregado();
+                Empregado novoEmpregado = inserirDadosEmpregado(*empregados);
                 adicionarEmpregado(empregados, novoEmpregado);
                 break;
             }
@@ -122,4 +127,29 @@ void menuEstatisticas(Empregados empregados)
         }
     }
     while (menu != 0);
+}
+
+void importarEmpregadosDefault(Empregados *empregados)
+{
+    char importar;
+
+    do
+    {
+        importar = devolverCaracter("Importar \"empregados.csv\" (S/N)");
+        importar = toupper(importar);
+
+        if (importar != 'S' && importar != 'N')
+            printf("\n\t## Opcao invalida.\n\n");
+    }
+    while (importar != 'S' && importar != 'N');
+
+    if (importar == 'S')
+    {
+        if (importarEmpregados("empregados.csv", empregados) == 1)
+            printf("Importado com sucesso.\n");
+        else
+            printf("Erro ao importar empregados.\n");
+
+        pausa();
+    }
 }

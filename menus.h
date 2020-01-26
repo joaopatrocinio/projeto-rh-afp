@@ -6,5 +6,6 @@
 void desenharMenu();
 void menuGerirEmpregados(Empregados *empregados);
 void menuEstatisticas(Empregados empregados);
+void importarEmpregadosDefault(Empregados *empregados);
 
 #endif
