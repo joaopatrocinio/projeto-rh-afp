@@ -110,8 +110,37 @@ void atualizarEmpregado(Empregados *empregados)
         empregados->listaEmpregados[index].data_nascimento = lerData();
         printf("\n\tData de inicio de ferias:\n\n");
         empregados->listaEmpregados[index].ferias_inicio = lerData();
-        printf("\n\tData de fim de ferias:\n\n");
-        empregados->listaEmpregados[index].ferias_fim = lerData();
+
+        int contar_data_fim = 0;
+
+        do
+        {
+            if (contar_data_fim != 0) printf("\n## Data fim menor que data inicio!\n");
+            contar_data_fim++;
+            printf("\n\tData de fim de ferias:\n");
+            empregados->listaEmpregados[index].ferias_fim = lerData();
+
+            if (empregados->listaEmpregados[index].ferias_fim.ano < empregados->listaEmpregados[index].ferias_inicio.ano)
+               continue;
+
+            else if (empregados->listaEmpregados[index].ferias_fim.ano > empregados->listaEmpregados[index].ferias_inicio.ano)
+                break;
+
+            if (empregados->listaEmpregados[index].ferias_fim.ano == empregados->listaEmpregados[index].ferias_inicio.ano)
+            {
+                 if (empregados->listaEmpregados[index].ferias_fim.mes<empregados->listaEmpregados[index].ferias_inicio.mes)
+                    continue;
+                 else if (empregados->listaEmpregados[index].ferias_fim.mes>empregados->listaEmpregados[index].ferias_inicio.mes)
+                    break;
+                 else if (empregados->listaEmpregados[index].ferias_fim.dia<empregados->listaEmpregados[index].ferias_inicio.dia)
+                    continue;
+                 else if(empregados->listaEmpregados[index].ferias_fim.dia>empregados->listaEmpregados[index].ferias_inicio.dia)
+                    break;
+            }
+
+            break;
+        }
+        while (1);
     }
     else
     {
